@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a01627709bf5314a94c691d6e8b5716, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DailyEmergencyResponseVR::DailyEmergencyResponseVR.EmergencyDeviceData
+  id: train-emergency
+  displayName: "\uC5F4\uCC28 \uBE44\uC0C1\uC7A5\uCE58"
+  zoneType: 0
+  deviceType: 7
+  description: "\uC5F4\uCC28 \uB0B4\uBD80\uC5D0\uC11C \uC2B9\uBB34\uC6D0\uC5D0\uAC8C
+    \uBE44\uC0C1 \uC0C1\uD669\uC744 \uC54C\uB9AC\uB294 \uC7A5\uCE58\uC785\uB2C8\uB2E4."
+  locationText: "\uAC1D\uC2E4 \uCD9C\uC785\uBB38 \uC606 \uB610\uB294 \uC5F0\uACB0\uBD80
+    \uC8FC\uBCC0"
+  useSituation: "\uAC1D\uC2E4 \uB0B4 \uD658\uC790, \uB07C\uC784, \uD3ED\uB825, \uD654\uC7AC
+    \uC9D5\uD6C4"
+  useMethod: "\uCEE4\uBC84\uB97C \uC5F4\uACE0 \uB808\uBC84 \uB610\uB294 \uD638\uCD9C\uBD80\uB97C
+    \uC870\uC791\uD574 \uC2B9\uBB34\uC6D0\uC5D0\uAC8C \uC54C\uB9BD\uB2C8\uB2E4."
+  requiredInteractionType: 1
+  successMessage: "\uC5F4\uCC28 \uBE44\uC0C1\uC7A5\uCE58 \uC870\uC791 \uC644\uB8CC.
+    \uC2B9\uBB34\uC6D0\uC5D0\uAC8C \uC0C1\uD669\uC774 \uC804\uB2EC\uB429\uB2C8\uB2E4."
+  failMessage: "\uC5F4\uCC28 \uB0B4\uBD80 \uC0AC\uACE0\uB294 \uC5F4\uCC28 \uBE44\uC0C1\uC7A5\uCE58\uB85C
+    \uC2B9\uBB34\uC6D0\uC5D0\uAC8C \uC989\uC2DC \uC54C\uB9BD\uB2C8\uB2E4."

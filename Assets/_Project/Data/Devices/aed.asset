@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a01627709bf5314a94c691d6e8b5716, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DailyEmergencyResponseVR::DailyEmergencyResponseVR.EmergencyDeviceData
+  id: aed
+  displayName: AED
+  zoneType: 0
+  deviceType: 2
+  description: "\uC2EC\uC815\uC9C0 \uC758\uC2EC \uD658\uC790\uC5D0\uAC8C \uC0AC\uC6A9\uD558\uB294
+    \uC790\uB3D9\uC2EC\uC7A5\uCDA9\uACA9\uAE30\uC785\uB2C8\uB2E4."
+  locationText: "\uC5ED\uBB34\uC2E4 \uADFC\uCC98\uC640 \uC2B9\uAC15\uC7A5 \uC548\uB0B4
+    \uD45C\uC9C0 \uC8FC\uBCC0"
+  useSituation: "\uC758\uC2DD\uACFC \uD638\uD761\uC774 \uC5C6\uB294 \uC751\uAE09
+    \uD658\uC790"
+  useMethod: "\uB36E\uAC1C\uB97C \uC5F4\uACE0 \uC548\uB0B4 \uC74C\uC131 \uB610\uB294
+    \uD654\uBA74 \uC9C0\uC2DC\uC5D0 \uB530\uB77C \uD328\uB4DC\uB97C \uBD80\uCC29\uD569\uB2C8\uB2E4."
+  requiredInteractionType: 2
+  successMessage: "AED \uC900\uBE44 \uC644\uB8CC. \uC548\uB0B4\uC5D0 \uB530\uB77C
+    \uD658\uC790 \uCC98\uCE58\uB97C \uC2DC\uC791\uD569\uB2C8\uB2E4."
+  failMessage: "\uC751\uAE09 \uD658\uC790\uC5D0\uAC8C\uB294 \uBE44\uC0C1\uD1B5\uD654\uC7A5\uCE58\uB85C
+    \uC2E0\uACE0\uD558\uACE0 AED\uB97C \uC900\uBE44\uD569\uB2C8\uB2E4."

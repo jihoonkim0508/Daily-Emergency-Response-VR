@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a01627709bf5314a94c691d6e8b5716, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DailyEmergencyResponseVR::DailyEmergencyResponseVR.EmergencyDeviceData
+  id: fire-hydrant
+  displayName: "\uC18C\uD654\uC804"
+  zoneType: 1
+  deviceType: 5
+  description: "\uD070 \uD654\uC7AC\uC5D0 \uBB3C\uC744 \uACF5\uAE09\uD558\uB294 \uACE0\uC815\uC2DD
+    \uC18C\uBC29 \uC124\uBE44\uC785\uB2C8\uB2E4."
+  locationText: "\uC2B9\uAC15\uC7A5 \uBCBD\uBA74 \uC18C\uD654\uC804\uD568"
+  useSituation: "\uBC88\uC9C0\uB294 \uD654\uC7AC \uB610\uB294 \uC18C\uD654\uAE30\uB9CC\uC73C\uB85C
+    \uBD80\uC871\uD55C \uD654\uC7AC"
+  useMethod: "\uD568\uC744 \uC5F4\uACE0 \uD638\uC2A4\uB97C \uC804\uAC1C\uD55C \uB4A4
+    \uBC38\uBE0C\uB97C \uB3CC\uB9BD\uB2C8\uB2E4."
+  requiredInteractionType: 2
+  successMessage: "\uC18C\uD654\uC804 \uC900\uBE44 \uC644\uB8CC. \uD070 \uD654\uC7AC
+    \uB300\uC751 \uC808\uCC28\uB97C \uD655\uC778\uD588\uC2B5\uB2C8\uB2E4."
+  failMessage: "\uD070 \uD654\uC7AC\uB294 \uC989\uC2DC \uC2E0\uACE0\uD558\uACE0 \uC548\uC804\uC774
+    \uD655\uBCF4\uB420 \uB54C\uB9CC \uC18C\uD654\uC804\uC744 \uC900\uBE44\uD569\uB2C8\uB2E4."

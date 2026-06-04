@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a01627709bf5314a94c691d6e8b5716, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DailyEmergencyResponseVR::DailyEmergencyResponseVR.EmergencyDeviceData
+  id: fire-extinguisher
+  displayName: "\uC18C\uD654\uAE30"
+  zoneType: 1
+  deviceType: 1
+  description: "\uCD08\uAE30 \uD654\uC7AC\uB97C \uC9C4\uC555\uD558\uB294 \uD734\uB300\uC6A9
+    \uC7A5\uBE44\uC785\uB2C8\uB2E4."
+  locationText: "\uC2B9\uAC15\uC7A5 \uBCBD\uBA74 \uC18C\uD654\uAE30\uD568"
+  useSituation: "\uC791\uC740 \uBD88\uAF43\uC774\uB098 \uCD08\uAE30 \uD654\uC7AC"
+  useMethod: "\uC548\uC804\uD540\uC744 \uBF51\uACE0 \uB178\uC990\uC744 \uD654\uC810\uC73C\uB85C
+    \uD5A5\uD55C \uB4A4 \uC190\uC7A1\uC774\uB97C \uB204\uB985\uB2C8\uB2E4."
+  requiredInteractionType: 3
+  successMessage: "\uC18C\uD654\uAE30 \uC0AC\uC6A9 \uC808\uCC28 \uC644\uB8CC. \uCD08\uAE30
+    \uD654\uC7AC \uB300\uC751\uC744 \uB9C8\uCCE4\uC2B5\uB2C8\uB2E4."
+  failMessage: "\uC18C\uD654\uAE30\uB294 \uC791\uACE0 \uBC88\uC9C0\uC9C0 \uC54A\uC740
+    \uBD88\uC5D0\uB9CC \uC0AC\uC6A9\uD558\uACE0 \uB300\uD53C\uB85C\uB97C \uD655\uBCF4\uD569\uB2C8\uB2E4."

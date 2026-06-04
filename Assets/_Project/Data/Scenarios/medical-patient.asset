@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe137225287b92b41825a7eb60003f00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DailyEmergencyResponseVR::DailyEmergencyResponseVR.ScenarioData
+  id: medical-patient
+  displayName: "\uC751\uAE09 \uD658\uC790"
+  scenarioType: 0
+  description: "\uC2B9\uAC15\uC7A5\uC5D0 \uC4F0\uB7EC\uC9C4 \uD658\uC790\uB97C \uBC1C\uACAC\uD588\uC2B5\uB2C8\uB2E4."
+  relatedDeviceIds:
+  - emergency-call
+  - aed
+  orderedDeviceIds:
+  - emergency-call
+  - aed
+  introNpcLine: "\uB85C\uBD07: \uC704\uCE58\uB97C \uBA3C\uC800 \uC54C\uB9AC\uACE0
+    AED\uB97C \uC900\uBE44\uD558\uC138\uC694."
+  successSummary: "\uC2E0\uACE0\uC640 AED \uC900\uBE44\uB97C \uC21C\uC11C\uB300\uB85C
+    \uC644\uB8CC\uD588\uC2B5\uB2C8\uB2E4."
+  failHint: "\uC751\uAE09 \uD658\uC790\uB294 \uC2E0\uACE0 \uD6C4 AED \uC900\uBE44
+    \uC21C\uC11C\uAC00 \uAE30\uBCF8\uC785\uB2C8\uB2E4."

@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edc13d69a2990db4c9d9c12bdfa5f1c7, type: 3}
+  m_Name: TrainingContentLibrary
+  m_EditorClassIdentifier: DailyEmergencyResponseVR::DailyEmergencyResponseVR.TrainingContentLibrary
+  devices:
+  - {fileID: 11400000, guid: 8dee9d9ff81291245b306e3abb776734, type: 2}
+  - {fileID: 11400000, guid: 366a1a86e5ec89e4b8e98d925dfd0433, type: 2}
+  - {fileID: 11400000, guid: be04c87279bbc86428babc2690023a12, type: 2}
+  - {fileID: 11400000, guid: 27a0ef02262290741b1b2c06382d899d, type: 2}
+  - {fileID: 11400000, guid: 4de003f7878cd094c961e99c40361ab1, type: 2}
+  - {fileID: 11400000, guid: 3979a89338b65b947b1063b8a5dd3d45, type: 2}
+  - {fileID: 11400000, guid: 8d9e535fd1a8e5147bf0ecf1fda32100, type: 2}
+  - {fileID: 11400000, guid: cd110393b6724354685b07952316181d, type: 2}
+  scenarios:
+  - {fileID: 11400000, guid: 07760666526492d4ba813bb58d137603, type: 2}
+  - {fileID: 11400000, guid: e930a49156bf67142a687a4e75125d47, type: 2}
+  - {fileID: 11400000, guid: 16c494bff09e7204bab1cdb301286236, type: 2}
+  - {fileID: 11400000, guid: 8e82ab470f3a5f44186fb558d0e87464, type: 2}
+  - {fileID: 11400000, guid: 61c1be9c7f020f040976390a0176fbc3, type: 2}
+  - {fileID: 11400000, guid: a9fb7f92d7c12be499de571c6d82c8df, type: 2}
+  zones:
+  - {fileID: 11400000, guid: 695f9dd211a98cc48a4a4b330c332022, type: 2}
+  - {fileID: 11400000, guid: 665b4ff5d5d865641bc0a036dd2ec915, type: 2}
+  - {fileID: 11400000, guid: a9dfdc1bc61ade14dbfb06a1f477a4a2, type: 2}

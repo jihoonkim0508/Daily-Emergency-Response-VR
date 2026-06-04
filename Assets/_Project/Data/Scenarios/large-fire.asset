@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe137225287b92b41825a7eb60003f00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DailyEmergencyResponseVR::DailyEmergencyResponseVR.ScenarioData
+  id: large-fire
+  displayName: "\uD070 \uBD88"
+  scenarioType: 4
+  description: "\uBD88\uC774 \uBCBD\uBA74\uC73C\uB85C \uBC88\uC9C0\uACE0 \uC5F0\uAE30\uAC00
+    \uB298\uC5B4\uB0A9\uB2C8\uB2E4."
+  relatedDeviceIds:
+  - emergency-call
+  - fire-hydrant
+  - guide-light
+  orderedDeviceIds:
+  - emergency-call
+  - fire-hydrant
+  - guide-light
+  introNpcLine: "\uB85C\uBD07: \uC2E0\uACE0 \uD6C4 \uC548\uC804\uD558\uBA74 \uC18C\uD654\uC804\uC744
+    \uD655\uC778\uD558\uACE0 \uB300\uD53C \uBC29\uD5A5\uC744 \uD655\uBCF4\uD558\uC138\uC694."
+  successSummary: "\uD070 \uD654\uC7AC \uB300\uC751\uACFC \uB300\uD53C \uBC29\uD5A5
+    \uD655\uC778\uC744 \uC644\uB8CC\uD588\uC2B5\uB2C8\uB2E4."
+  failHint: "\uD070 \uBD88\uC740 \uC2E0\uACE0\uC640 \uB300\uD53C\uAC00 \uC6B0\uC120\uC774\uBA70
+    \uC18C\uD654\uC804\uC740 \uC548\uC804\uD560 \uB54C\uB9CC \uD655\uC778\uD569\uB2C8\uB2E4."
