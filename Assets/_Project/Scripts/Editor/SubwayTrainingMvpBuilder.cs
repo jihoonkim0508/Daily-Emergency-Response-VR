@@ -5,11 +5,17 @@ using System.Linq;
 using DailyEmergencyResponseVR;
 using TMPro;
 using UnityEditor;
+using UnityEditor.Presets;
 using UnityEditor.SceneManagement;
+using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.TextCore.LowLevel;
 using UnityEngine.UI;
+using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
+using UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation;
+using UnityEngine.XR.Interaction.Toolkit.UI;
 using ProjectDeviceType = DailyEmergencyResponseVR.DeviceType;
 
 public static class SubwayTrainingMvpBuilder
@@ -19,8 +25,14 @@ public static class SubwayTrainingMvpBuilder
     const string SceneRoot = ProjectRoot + "/Scenes";
     const string PrefabRoot = ProjectRoot + "/Prefabs";
     const string MaterialRoot = ProjectRoot + "/Materials";
+    const string FontRoot = ProjectRoot + "/Fonts";
     const string MainScenePath = SceneRoot + "/SubwayTraining.unity";
     const string LibraryPath = DataRoot + "/TrainingContentLibrary.asset";
+    const string KoreanSourceFontPath = FontRoot + "/NotoSansCJKkr-Regular.otf";
+    const string KoreanTmpFontPath = FontRoot + "/NotoSansCJKkr-Regular SDF.asset";
+    const string XrUiInputModulePresetPath = "Assets/Samples/XR Interaction Toolkit/3.4.1/Starter Assets/Presets/XRI Default XR UI Input Module.preset";
+
+    static TMP_FontAsset s_KoreanFontAsset;
 
     [MenuItem("Daily Emergency Response/Build Subway Training MVP")]
     public static void Build()
@@ -40,7 +52,7 @@ public static class SubwayTrainingMvpBuilder
 
     static void EnsureFolders()
     {
-        foreach (var path in new[] { ProjectRoot, DataRoot, SceneRoot, PrefabRoot, MaterialRoot })
+        foreach (var path in new[] { ProjectRoot, DataRoot, SceneRoot, PrefabRoot, MaterialRoot, FontRoot })
             EnsureFolder(path);
     }
 
@@ -293,6 +305,8 @@ public static class SubwayTrainingMvpBuilder
         floor.transform.localScale = new Vector3(14f, 0.2f, 9f);
         floor.transform.position = new Vector3(0f, -0.1f, 0f);
         floor.GetComponent<Renderer>().sharedMaterial = materials["Platform"];
+        var teleportArea = floor.AddComponent<TeleportationArea>();
+        teleportArea.interactionLayers = GetTeleportInteractionLayerMask();
 
         var railA = GameObject.CreatePrimitive(PrimitiveType.Cube);
         railA.name = "Track Rail Left";
@@ -395,7 +409,7 @@ public static class SubwayTrainingMvpBuilder
 
     static WristStatusPanel CreateWristPanel()
     {
-        var canvas = CreateCanvas("Wrist UI", new Vector3(0.45f, 1.15f, 0.9f), Quaternion.Euler(50f, 180f, 0f), new Vector2(360f, 220f));
+        var canvas = CreateCanvas("Status Panel", new Vector3(1.35f, 1.55f, 3.9f), Quaternion.Euler(0f, 180f, 0f), new Vector2(360f, 220f));
         CreatePanel(canvas.transform, new Color(0.02f, 0.05f, 0.06f, 0.92f), new Vector2(360f, 220f), Vector2.zero);
         var state = CreateUiText("State", canvas.transform, "시작", 24, new Vector2(310f, 45f), new Vector2(0f, 70f), TextAlignmentOptions.Center);
         var action = CreateUiText("Action", canvas.transform, "중앙 스크린에서 시작을 선택하세요.", 18, new Vector2(310f, 80f), new Vector2(0f, 10f), TextAlignmentOptions.TopLeft);
@@ -442,6 +456,7 @@ public static class SubwayTrainingMvpBuilder
         var canvas = canvasObject.AddComponent<Canvas>();
         canvas.renderMode = RenderMode.WorldSpace;
         canvasObject.AddComponent<GraphicRaycaster>();
+        canvasObject.AddComponent<TrackedDeviceGraphicRaycaster>();
         canvas.GetComponent<RectTransform>().sizeDelta = size;
         return canvas;
     }
@@ -464,6 +479,7 @@ public static class SubwayTrainingMvpBuilder
         textObject.transform.SetParent(parent, false);
         var tmp = textObject.AddComponent<TextMeshProUGUI>();
         tmp.text = text;
+        tmp.font = GetKoreanFontAsset();
         tmp.fontSize = fontSize;
         tmp.color = Color.white;
         tmp.alignment = alignment;
@@ -503,6 +519,7 @@ public static class SubwayTrainingMvpBuilder
         textObject.transform.localRotation = Quaternion.Euler(0f, 180f, 0f);
         var tmp = textObject.AddComponent<TextMeshPro>();
         tmp.text = text;
+        tmp.font = GetKoreanFontAsset();
         tmp.fontSize = fontSize;
         tmp.color = Color.white;
         tmp.alignment = alignment;
@@ -518,16 +535,122 @@ public static class SubwayTrainingMvpBuilder
         {
             var instance = PrefabUtility.InstantiatePrefab(prefab) as GameObject;
             instance.name = "XR Origin (XR Rig)";
-            instance.transform.position = new Vector3(0f, 0f, -2.2f);
+            SetXrOriginStartPose(instance.transform);
+            CreateXrSceneServices();
             return;
         }
 
         var fallback = new GameObject("XR Origin (XR Rig)");
+        SetXrOriginStartPose(fallback.transform);
         fallback.AddComponent<Unity.XR.CoreUtils.XROrigin>();
         var camera = new GameObject("Main Camera");
         camera.transform.SetParent(fallback.transform);
         camera.tag = "MainCamera";
         camera.AddComponent<Camera>();
+        CreateXrSceneServices();
+    }
+
+    static void SetXrOriginStartPose(Transform xrOrigin)
+    {
+        xrOrigin.position = new Vector3(0f, 0f, 1.2f);
+        xrOrigin.rotation = Quaternion.Euler(0f, 0f, 0f);
+    }
+
+    static void CreateXrSceneServices()
+    {
+        new GameObject("XR Interaction Manager").AddComponent<XRInteractionManager>();
+
+        var eventSystemObject = new GameObject("EventSystem");
+        eventSystemObject.AddComponent<EventSystem>();
+        var inputModule = eventSystemObject.AddComponent<XRUIInputModule>();
+
+        var preset = AssetDatabase.LoadAssetAtPath<Preset>(XrUiInputModulePresetPath);
+        if (preset != null)
+            preset.ApplyTo(inputModule);
+        else
+            Debug.LogWarning($"XR UI input module preset not found at {XrUiInputModulePresetPath}. Built-in fallback actions remain enabled.");
+    }
+
+    static InteractionLayerMask GetTeleportInteractionLayerMask()
+    {
+        return unchecked((InteractionLayerMask)(1 << 31));
+    }
+
+    static TMP_FontAsset GetKoreanFontAsset()
+    {
+        if (s_KoreanFontAsset != null)
+            return s_KoreanFontAsset;
+
+        AssetDatabase.ImportAsset(KoreanSourceFontPath, ImportAssetOptions.ForceUpdate);
+        s_KoreanFontAsset = AssetDatabase.LoadAssetAtPath<TMP_FontAsset>(KoreanTmpFontPath);
+        if (IsInvalidFontAsset(s_KoreanFontAsset))
+        {
+            AssetDatabase.DeleteAsset(KoreanTmpFontPath);
+            s_KoreanFontAsset = null;
+        }
+
+        if (s_KoreanFontAsset == null)
+        {
+            var sourceFont = AssetDatabase.LoadAssetAtPath<Font>(KoreanSourceFontPath);
+            if (sourceFont == null)
+            {
+                Debug.LogWarning($"Korean source font not found at {KoreanSourceFontPath}. TextMesh Pro will use its default font.");
+                return null;
+            }
+
+            s_KoreanFontAsset = TMP_FontAsset.CreateFontAsset(sourceFont, 90, 9, GlyphRenderMode.SDFAA, 1024, 1024, AtlasPopulationMode.Dynamic, true);
+            s_KoreanFontAsset.name = "NotoSansCJKkr-Regular SDF";
+            AssetDatabase.CreateAsset(s_KoreanFontAsset, KoreanTmpFontPath);
+            SaveFontSubAssets(s_KoreanFontAsset);
+        }
+
+        s_KoreanFontAsset.atlasPopulationMode = AtlasPopulationMode.Dynamic;
+        EditorUtility.SetDirty(s_KoreanFontAsset);
+        EnsureTmpFallbackFont(s_KoreanFontAsset);
+        return s_KoreanFontAsset;
+    }
+
+    static bool IsInvalidFontAsset(TMP_FontAsset fontAsset)
+    {
+        return fontAsset != null &&
+            (fontAsset.atlasTextures == null ||
+            fontAsset.atlasTextures.Length == 0 ||
+            fontAsset.atlasTextures[0] == null ||
+            fontAsset.material == null);
+    }
+
+    static void SaveFontSubAssets(TMP_FontAsset fontAsset)
+    {
+        if (fontAsset == null)
+            return;
+
+        if (fontAsset.atlasTextures != null)
+        {
+            foreach (var atlasTexture in fontAsset.atlasTextures)
+            {
+                if (atlasTexture != null && string.IsNullOrEmpty(AssetDatabase.GetAssetPath(atlasTexture)))
+                    AssetDatabase.AddObjectToAsset(atlasTexture, fontAsset);
+            }
+        }
+
+        if (fontAsset.material != null && string.IsNullOrEmpty(AssetDatabase.GetAssetPath(fontAsset.material)))
+            AssetDatabase.AddObjectToAsset(fontAsset.material, fontAsset);
+
+        AssetDatabase.SaveAssets();
+    }
+
+    static void EnsureTmpFallbackFont(TMP_FontAsset fontAsset)
+    {
+        if (fontAsset == null || TMP_Settings.fallbackFontAssets == null)
+            return;
+
+        TMP_Settings.fallbackFontAssets.RemoveAll(asset => asset == null);
+
+        if (!TMP_Settings.fallbackFontAssets.Contains(fontAsset))
+            TMP_Settings.fallbackFontAssets.Add(fontAsset);
+
+        if (TMP_Settings.instance != null)
+            EditorUtility.SetDirty(TMP_Settings.instance);
     }
 
     static void SetSerialized(UnityEngine.Object target, string propertyName, UnityEngine.Object value)
