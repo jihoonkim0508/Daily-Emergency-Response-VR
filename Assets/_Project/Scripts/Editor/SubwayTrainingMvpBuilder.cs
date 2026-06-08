@@ -362,14 +362,14 @@ public static class SubwayTrainingMvpBuilder
     {
         var positions = new Dictionary<string, Vector3>
         {
-            ["emergency-call"] = new Vector3(-5.4f, 0.65f, -1.1f),
-            ["aed"] = new Vector3(-4.3f, 0.7f, 1.05f),
-            ["escalator-stop"] = new Vector3(-3.6f, 0.55f, -1.2f),
-            ["train-emergency"] = new Vector3(-5.2f, 0.65f, 1.2f),
-            ["fire-extinguisher"] = new Vector3(-0.8f, 0.65f, -1.1f),
-            ["fire-hydrant"] = new Vector3(0.8f, 0.75f, 1.05f),
-            ["emergency-door-release"] = new Vector3(3.8f, 0.65f, -1.1f),
-            ["guide-light"] = new Vector3(5.1f, 1.8f, 1.05f)
+            ["emergency-call"] = new Vector3(-5.4f, 0.65f, -1f),
+            ["aed"] = new Vector3(-3.6f, 0.7f, 1f),
+            ["escalator-stop"] = new Vector3(-3.6f, 0.55f, -1f),
+            ["train-emergency"] = new Vector3(-5.4f, 0.65f, 1f),
+            ["fire-extinguisher"] = new Vector3(-0.9f, 0.65f, -1f),
+            ["fire-hydrant"] = new Vector3(0.9f, 0.75f, 1f),
+            ["emergency-door-release"] = new Vector3(3.6f, 0.65f, -1f),
+            ["guide-light"] = new Vector3(5.4f, 1.8f, 1f)
         };
 
         var devices = new List<EmergencyDevice>();
@@ -554,6 +554,7 @@ public static class SubwayTrainingMvpBuilder
     {
         xrOrigin.position = new Vector3(0f, 0f, 1.2f);
         xrOrigin.rotation = Quaternion.Euler(0f, 0f, 0f);
+        xrOrigin.localScale = Vector3.one;
     }
 
     static void CreateXrSceneServices()
